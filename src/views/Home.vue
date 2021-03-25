@@ -8,7 +8,7 @@
         </div>
         <!-- Content loader -->
         <div v-else class="container-fluid py-5 col-lg-4">
-            <content-loader-component></content-loader-component>
+          <content-loader-component></content-loader-component>
         </div>
         <!-- end of content loader -->
         <div class="container-fluid py-8 col-lg-4">
@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-      randomNumbers:[100, 0, 0,1],
+      randomNumbers:[100, 0, 0, 0],
       title:"",
       description: "",
       isloading: true
