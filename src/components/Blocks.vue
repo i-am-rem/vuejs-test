@@ -51,6 +51,7 @@ export default {
         (this.numbers) ?  setTimeout(() => { this.isloading = false }, 3000) : this.isloading = true;
     },
     methods:{
+        /* opens modal when completed block is 100 */
         setBlockValue(num, index) {
             let value = (num == 100 ) ? 0 : 100;
             this.numbers.splice(index,1, value);

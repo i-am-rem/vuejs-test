@@ -54,14 +54,14 @@ export default {
      * sets the title & the description
      * */ 
     async getContent() {
-        (mockData) ?  
-          setTimeout(() => {
-            this.isloading = false
-            this.title = mockData.title
-            this.description = mockData.description
-            this.randomNumbers = mockData.blocks.map(numbers => numbers.value)
-          }, 3000) 
-        : this.isloading = false;
+      (mockData) ?  
+        setTimeout(() => {
+          this.isloading = false
+          this.title = mockData.title
+          this.description = mockData.description
+          this.randomNumbers = mockData.blocks.map(numbers => numbers.value)
+        }, 3000) 
+      : this.isloading = false;
     },
     /* read more function */
     activateReadMore(){

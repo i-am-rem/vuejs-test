@@ -63,12 +63,12 @@ export default {
         * sets the title & the description
         * */ 
         getCollections() {
-            (mockData.collections && mockData.collections.length > 0 ) ?  
-                setTimeout(() => {
-                    this.isloading = false
-                    this.collections = mockData.collections
-                }, 3000) 
-                : this.isloading = false;
+          (mockData.collections && mockData.collections.length > 0 ) ?  
+            setTimeout(() => {
+              this.isloading = false
+              this.collections = mockData.collections
+            }, 3000) 
+          : this.isloading = false;
             
         },
         /* post a content */
