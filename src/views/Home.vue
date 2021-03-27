@@ -73,7 +73,7 @@ export default {
         },
         /* post a content */
         submitText() {
-          this.collections.push({content:this.text})
+          this.collections.unshift({content:this.text})
           this.text = ''
           let myToast = new Toast(document.getElementById('liveToast'))
           myToast.show()
