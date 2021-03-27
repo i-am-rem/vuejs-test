@@ -6,7 +6,7 @@
             <label for="floatingTextarea2">Type text here to post...</label>
           </div>
           <!-- cards -->
-          <button type="button" class="btn btn-outline-primary" :disabled="!text" v-on:click="submitText">Post now</button>
+          <button type="button" class="btn btn-outline-primary" :disabled="!text || isloading" v-on:click="submitText">Post now</button>
             <div v-if="!isloading" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col" v-for="(collection, index) in collections" :key="index">
                     <card :content="collection.content" v-on:deletePostEvent="deletePost" :keyId="index"></card>
