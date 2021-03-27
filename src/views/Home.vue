@@ -4,7 +4,13 @@
      <div class="row">
         <div v-if="!isloading" class="container-fluid py-5 col-lg-4">
           <h1 class="display-5 fw-bold">{{ title }}</h1>
-          <p class="col-md-8 fs-4">{{ description }}</p>
+          <p class="col-md-8 fs-4">
+            <span v-if="!readMoreActivated">{{ description.slice(0, 150) }}</span>
+            <a class="" v-if="!readMoreActivated" @click="activateReadMore" href="#">
+               Read more...
+            </a>
+            <span v-if="readMoreActivated" v-html="description"></span>
+          </p>
         </div>
         <!-- Content loader -->
         <div v-else class="container-fluid py-5 col-lg-4">
@@ -22,8 +28,7 @@
 <script>
 import Counter from '@/components/Blocks.vue'
 import ContentLoaderComponent from '@/components/ContentLoader.vue'
-import axios from 'axios'
-
+import mockData from '@/fixtures/pxtqu8tf3c69m4wus0t9s8wzt.json'
 
 export default {
   name: 'Home',
@@ -33,10 +38,11 @@ export default {
   },
   data() {
     return {
-      randomNumbers:[100, 0, 0, 0],
+      randomNumbers:[],
       title:"",
       description: "",
-      isloading: true
+      isloading: true,
+      readMoreActivated: false
     }
   },
   created() {
@@ -47,23 +53,21 @@ export default {
      * sets the title & the description
      * */ 
     async getContent() {
-      const content =  axios.get('/static.json')
-      await content.then(response => {
-        console.log(response)
-        let delay = (response.data) ?  
+        console.log(mockData)
+        let delay = (mockData) ?  
           setTimeout(() => {
             this.isloading = false
-            this.title = response.data.title
-            this.description = response.data.description
+            this.title = mockData.title
+            this.description = mockData.description
+            this.randomNumbers = mockData.blocks.map(numbers => numbers.value)
           }, 3000) 
           : this.isloading = true ;
         delay
-      }).catch(error => {
-        console.log(error)
-        this.isloading = false
-      })
-     
-    }
+    },
+    /* read more function */
+    activateReadMore(){
+      this.readMoreActivated = true;
+    },
     
   }
 

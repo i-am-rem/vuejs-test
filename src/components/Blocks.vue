@@ -55,7 +55,7 @@ export default {
             let value = (num == 100 ) ? 0 : 100;
             this.numbers.splice(index,1, value);
             let modal = new Modal(document.getElementById('exampleModal'));
-            let equal = this.numbers.every((val, i, arr) => val === arr[0] );
+            let equal = this.numbers.every((val, i, arr) => val === arr[0] && val == 100 );
             (equal) ? modal.show() : ''
             
         }
