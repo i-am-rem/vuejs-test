@@ -15,7 +15,7 @@
     </div>
 </template>
 <script>
-import axios from 'axios'
+import mockData from '@/fixtures/pxtqu8tf3c69m4wus0t9s8wzt.json'
 import Card from '@/components/Card.vue'
 import CollectionsLoader from '@/components/CollectionsLoader.vue'
 
@@ -37,21 +37,13 @@ export default {
         /**
         * sets the title & the description
         * */ 
-        async getCollections() {
-            const content =  axios.get('/static.json')
-            await content.then(response => {
-                console.log(response)
-                let delay = (response.data.collections && response.data.collections.length > 0 ) ?  
-                    setTimeout(() => {
-                        this.isloading = false
-                        this.collections = response.data.collections
-                    }, 3000) 
-                    : this.isloading = true;
-                delay
-            }).catch(error => {
-                console.log(error)
-                this.isloading = false
-            })
+        getCollections() {
+            (mockData.collections && mockData.collections.length > 0 ) ?  
+                setTimeout(() => {
+                    this.isloading = false
+                    this.collections = mockData.collections
+                }, 3000) 
+                : this.isloading = false;
             
         }
     }
